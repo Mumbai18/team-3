@@ -3,6 +3,7 @@
 
 <?php
 include('include/header.php');
+include('connection1.php');
 ?>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -60,7 +61,11 @@ include('include/header.php');
             </li>
             <li class="breadcrumb-item active">Student List</li>
         </ol>
+        <?php
+            $query1="Select username,id from user where role='donor'";
+            $res1=mysqli_query($conn,$query1);
 
+        ?>
         <!--        student table-->
         <div class="card mb-3">
             <div class="card-header">
@@ -72,22 +77,27 @@ include('include/header.php');
                         <thead>
                         <tr>
                             <th></th>
-                            <th>Position</th>
+                            <th>Name</th>
+                            <th>Amount</th>
                         </tr>
                         </thead>
-
-
+                        <?php
+                            if(mysqli_num_rows($res1)>0){
+                            //we have data
+                            while($row=mysqli_fetch_assoc($res1)){
+                            $iddd=$row['id'];
+                            $query2="select amount from donor where id=$iddd";
+                            $res2=mysqli_query($conn,$query2);
+                            $row2=mysqli_fetch_assoc($res2);
+                        ?>
                         <tr>
                             <td><input type="checkbox" ></td>
-                            <td>Systems Administrator</td>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row2['amount'];?></td>
                         </tr>
 
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>Development Lead</td>
-                        </tr>
-
-
+                        <?php }
+                            }?>
 
                         </tbody>
                     </table>
@@ -98,25 +108,35 @@ include('include/header.php');
                             <tr>
                                 <th></th>
                                 <th>Name</th>
+                                <th>Suggested Amount</th>
                                 <th>Amount</th>
                             </tr>
                             </thead>
+                            <?php
+//                            $query1="Select name from profile"
+                            $query="Select username,detail_id from user where id IN (Select id from student)";
+                            $res=mysqli_query($conn,$query);
+                            $query1="Select recommended_amount from student";
+                            $result1=mysqli_query($conn,$query1);
 
+                            $count=1;
+                            if(mysqli_num_rows($res)>0){
+                            //we have data
+                            while($row=mysqli_fetch_assoc($res) && $row1=mysqli_fetch_assoc($result1)) {
 
-                            <tr>
-                                <td><input type="checkbox" onclick="toggleInput(1)"></td>
-                                <td>Systems Administrator</td>
-                                <td><input type="text" id="1" disabled=true> </td>
-                            </tr>
+                                ?>
 
-                            <tr>
-                                <td><input type="checkbox" onclick="toggleInput(2)"></td>
-                                <td>Development Lead</td>
-                                <td><input type="text" id="2" disabled=true></td>
-                            </tr>
+                                <tr>
+                                    <td><input type="checkbox" onclick="toggleInput(<?php echo $count;?>)"></td>
+                                    <td><?php echo $row['name']; ?></td>
+                                    <td><?php echo $row1['recommended_amount'];?></td>
+                                    <td><input type="text" id="<?php echo $count; ?>" disabled=true></td>
+                                </tr>
 
-
-
+                                <?php
+                                $count++;
+                            }}
+                            ?>
                             </tbody>
                         </table>
                     </div>
