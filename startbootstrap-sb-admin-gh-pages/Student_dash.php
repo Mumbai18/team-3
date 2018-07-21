@@ -20,9 +20,6 @@ $row2 = mysqli_fetch_array($query2);
 //echo "$query";
 $row = mysqli_fetch_array($query);
 $result =  $row['status'];
-//if ($t <.. "20")
-
-
 
 ?>
 
@@ -288,8 +285,6 @@ ol.progtrckr li.progtrckr-0:before {
               <tbody>
                 
     <?php
-    $no   = 1;
-    $total  = 0;
     while ($row2 = mysqli_fetch_array($query2))
     {
       
@@ -299,8 +294,7 @@ ol.progtrckr li.progtrckr-0:before {
         </tr>';
       
     }
-    ?>
-              </tbody>
+    ?></tbody>
             </table>
           </div>
         </div>
