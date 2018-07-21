@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<?php
-  session_start();
-?>
+
 <html lang="en">
 
 <?php
+session_start();
   include('connection1.php');
     include('include/header.php');
 ?>
@@ -60,7 +59,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                           <th>Name</th><th>Qualification:</th><th>Aspiration</th><th>Family Income</th><th>Expected Help</th>
+                           <th>Name</th><th>Qualification:</th><th>Aspiration</th><th>Family Income</th><th>Expected Help</th><th>Add Student to List</th>
                         </tr>
                         </thead>
 
@@ -72,7 +71,7 @@ $pwd = "pass@123"; //password
 
 
 $link = mysqli_connect($host, $user, $pwd, $db);
- $query = "SELECT p.name,p.qualification ,s.aspiration, (s.mom_income + s.dad_income) as asp,s.financial_amount FROM profile p ,student s WHERE s.id=p.id";
+ $query = "SELECT u.detail_id,u.id,p.name,p.qualification ,s.aspiration, (s.mom_income + s.dad_income) as asp,s.financial_amount FROM user u,profile p ,student s WHERE u.role like 'student' AND u.detail_id = p.id AND s.id=u.id";
 $results = mysqli_query($link, $query);
 while($row = mysqli_fetch_array($results))
 {
@@ -86,6 +85,8 @@ while($row = mysqli_fetch_array($results))
   echo $row['asp'];
    echo "</td><td>";    
   echo $row['financial_amount'];
+  echo "</td><td>";    
+  echo "<a href='donor_connected.php?id=".$row['id']."'>Add student</a>";
   echo "</td></tr>";  
 }?>
                         </tbody>
