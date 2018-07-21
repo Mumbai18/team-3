@@ -10,7 +10,7 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Register an Account</div>
       <div class="card-body">
-        <form>
+        <form  class="login-form" action="registeruser.php" method="post">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
@@ -60,19 +60,21 @@
           <a class="d-block small mt-3" href="login_user.php">Login Page</a>
           <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
+
       </div>
     </div>
 
   </div>
+
   <?php
 			if(isset($_POST["submit"]))
 	{
 			//$res=0;
 			$email = $_POST['email'];
       $Role = $_POST['Role'];
-     $sql = "select * from user where email ='$_POST[email]'";
-     $result = mysqli_query($con,$sql);
-		 echo mysqli_num_rows($result);
+     //$sql = "select * from user where email ='$_POST[email]'";
+     //$result = mysqli_query($con,$sql);
+		 //echo mysqli_num_rows($result);
      if(mysqli_num_rows($result)>=1)
         {
 					?>
@@ -82,12 +84,13 @@
 				 </script>
         <?php }
 			else{
-			$sql2="insert into user (FirstName,LastName,,email,password) values ('','$_POST[firstname]',$_POST[lastname],'$_POST[email]','$_POST[password]',$Role)";
+        //echo "$_POST[firstname]";
+			$sql2="insert into user (id,firstname,lastname,role,phone,email,password) values ('','$_POST[firstname]','$_POST[lastname]','$Role','$_POST[phone]','$_POST[email]','$_POST[password]');";
 			$ress=mysqli_query($con, $sql2);
 			  ?>
 			  <script type="text/javascript">
-			  window.location="login_.php";
-				alert('Registration successfull');
+			  window.location="registeruser.php";
+				//alert('Registration successfull');
 			  </script>
 			  <?php
 			}
