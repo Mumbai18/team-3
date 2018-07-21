@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<?php
-  session_start();
-?>
 <html lang="en">
 
 <?php
+
   include('connection1.php');
     include('include/header.php');
+
 ?>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -19,12 +18,18 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="committee_dashboard.php">
+                <a class="nav-link" href="donorgrid.php">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Student List</span>
                 </a>
             </li>
             
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="connected_students.php">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Students connected with you.</span>
+                </a>
+            </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
