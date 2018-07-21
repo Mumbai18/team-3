@@ -9,7 +9,7 @@ if (!$conn) {
   die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
 }
 
-$sql = 'SELECT p.id, p.name, s.funds_allocated ,s.timestamp, s.flag FROM `donor_student` s , `profile` p WHERE p.id = s.student_id && s.donor_id = 1001;';
+$sql = 'SELECT student_id, student_name,donor_name, funds_allocated , year, flag FROM `donor_student` WHERE donor_id = 1001;';
     
 $query = mysqli_query($conn, $sql);
 
@@ -43,7 +43,7 @@ if (!$query) {
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">Welcome!!</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -203,10 +203,10 @@ if (!$query) {
     {
       
       echo '<tr>
-          <td>'.$row['id'].'</td>
-          <td>'.$row['name'].'</td>
+          <td>'.$row['student_id'].'</td>
+          <td>'.$row['student_name'].'</td>
           <td>'.$row['funds_allocated'].'</td>
-          <td>'.$row['timestamp'].'</td>
+          <td>'.$row['year'].'</td>
           <td>'.$row['flag'].'</td>
         </tr>';
       
