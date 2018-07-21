@@ -7,29 +7,44 @@
 <body class="bg-dark">
 <div class="container">
     <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
+        <div class="card-header">Application</div>
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input class="form-control" id="inputName" placeholder="Enter Name">
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" id="inputContact" type="number" placeholder="Enter Contact Number">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+                    <input type="number" id="inputAge" class="form-control" placeholder="Enter Age">
                 </div>
+
                 <div class="form-group">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox"> Remember Password</label>
-                    </div>
+                    <input type="number" id="inputQualification" class="form-control" placeholder="Enter Current Qualification">
                 </div>
-                <a class="btn btn-primary btn-block" href="index.html">Login</a>
+
+                <div class="form-group">
+                    <input type="number" class="form-control" id="inputFamilyIncome" placeholder="Enter Family Income">
+                </div>
+
+                <div class="form-group">
+                    <input type="number" class="form-control" id="inputHelp" placeholder="Enter Financial Help Needed">
+                </div>
+
+                <div class="checkbox">
+                    <label>Extra Curricular Activities
+                    <input type="checkbox" value="sports">Sports
+                    <input type="checkbox" value="drawing">Drawing</label>
+                </div>
+
+                <div class="form-group">
+
+                </div>
+                <a class="btn btn-primary btn-block" href="index.html">Submit</a>
             </form>
-            <div class="text-center">
-                <a class="d-block small mt-3" href="register.html">Register an Account</a>
-                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-            </div>
+
         </div>
     </div>
 </div>
