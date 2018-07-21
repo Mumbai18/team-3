@@ -4,7 +4,7 @@
 <?php
 include('include/header.php');
 include('connection1.php');
-$query = "SELECT st.city, count(*) as number FROM `donor-student` ds, student st WHERE ds.student_id = st.id GROUP BY st.city";
+$query = "SELECT st.city, count(*) as number FROM donor_student ds, student st WHERE ds.student_id = st.id GROUP BY st.city";
 $result = mysqli_query($conn, $query);
 
 ?>
@@ -17,12 +17,14 @@ $result = mysqli_query($conn, $query);
       google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawPieChart);
+      google.charts.setOnLoadCallback(drawLineChart);
+      google.charts.setOnLoadCallback(drawBarChart);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
-      function drawChart() {
+      function drawPieChart() {
 
         // Create the data table.
         var data = new google.visualization.arrayToDataTable([
@@ -37,11 +39,55 @@ $result = mysqli_query($conn, $query);
 
         // Set chart options
         var options = {'title':'How Many Students were Funded Last Year',
-                       'width':400,
+                       'width':350,
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('perArea'));
+        chart.draw(data, options);
+      }
+      function drawLineChart() {
+
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Donations'],
+          ['2004',  1000],
+          ['2005',  1170],
+          ['2006',  660],
+          ['2007',  1030]
+        ]);
+
+
+        // Set chart options
+        var options = {'title':'How Much was Donated',
+                       'width':350,
+                       'height':300
+                    };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('perAmount'));
+        chart.draw(data, options);
+      }
+      function drawBarChart() {
+
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Donaters'],
+          ['2004',  15],
+          ['2005',  10],
+          ['2006',  66],
+          ['2007',  100]
+        ]);
+
+
+        // Set chart options
+        var options = {'title':'Number of Donaters',
+                       'width':350,
+                       'height':300
+                    };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('perDonater'));
         chart.draw(data, options);
       }
     </script>
@@ -194,6 +240,8 @@ $result = mysqli_query($conn, $query);
                 <div class="card-body col-md-12">
                     <div class="row">
                         <div id="perArea"></div>
+                        <div id="perAmount"></div>
+                        <div id="perDonater"></div>
                     </div>
                 </div>
             </div>
