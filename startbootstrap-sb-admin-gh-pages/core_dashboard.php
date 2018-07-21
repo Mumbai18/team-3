@@ -36,6 +36,13 @@ include('connection1.php');
                 </a>
             </li>
 
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">Historic Data</span>
+                </a>
+            </li>
+
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
