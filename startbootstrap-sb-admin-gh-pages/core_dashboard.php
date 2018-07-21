@@ -4,8 +4,48 @@
 <?php
 include('include/header.php');
 include('connection1.php');
-?>
+$query = "SELECT st.city, count(*) as number FROM `donor-student` ds, student st WHERE ds.student_id = st.id GROUP BY st.city";
+$result = mysqli_query($conn, $query);
 
+?>
+<head>  
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.arrayToDataTable([
+                ['Area', 'Number'],
+                <?php
+                while($row = mysqli_fetch_array($result))
+                {
+                    echo "['".$row["city"]."', ".$row["number"]."],";
+                }
+                ?>
+            ]);
+
+        // Set chart options
+        var options = {'title':'How Many Students were Funded Last Year',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('perArea'));
+        chart.draw(data, options);
+      }
+    </script>
+</head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -99,7 +139,7 @@ include('connection1.php');
                         ?>
                         <tr>
                             <td><input type="checkbox" ></td>
-                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row2['amount'];?></td>
                         </tr>
 
@@ -148,8 +188,16 @@ include('connection1.php');
                 </div>
             </div>
         </div>
-
-    </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> Historic Data</div>
+                <div class="card-body col-md-12">
+                    <div class="row">
+                        <div id="perArea"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
