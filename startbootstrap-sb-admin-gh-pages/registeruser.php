@@ -41,7 +41,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <input class="form-control" name="email" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
           </div>
           <div class="form-group">
             <div class="form-row">
@@ -55,9 +55,9 @@
               </div>
             </div>
           </div>
-        <center>  <button name="submit" style="height:50px;width:200px;background-color:blue; color:white; ">login</button></form>
+        <center>  <button name="submit" style="height:50px;width:200px;background-color:blue; color:white; ">Register</button></form>
         <div class="text-center"></center>
-          <a class="d-block small mt-3" href="login_user.php">Login Page</a>
+          <a class="d-block small mt-3" href="login.php">Login Page</a>
           <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
 
@@ -75,26 +75,21 @@
      //$sql = "select * from user where email ='$_POST[email]'";
      //$result = mysqli_query($con,$sql);
 		 //echo mysqli_num_rows($result);
-     if(mysqli_num_rows($result)>=1)
-        {
-					?>
-					<script type="text/javascript">
-				 window.location="register.php";
-				 alert('Username exists');
-				 </script>
-        <?php }
-			else{
+     //if(mysqli_num_rows($result)>=1)
+      //  {
+				//
+
         //echo "$_POST[firstname]";
-			$sql2="insert into user (id,firstname,lastname,role,phone,email,password) values ('','$_POST[firstname]','$_POST[lastname]','$Role','$_POST[phone]','$_POST[email]','$_POST[password]');";
+			$sql2="insert into user (id,firstname,lastname,role,phone,email,password) values ('','$_POST[firstname]','$_POST[lastname]','$Role','$_POST[phone]','$email','$_POST[password]');";
 			$ress=mysqli_query($con, $sql2);
 			  ?>
 			  <script type="text/javascript">
-			  window.location="registeruser.php";
+			  window.location="login.php";
 				//alert('Registration successfull');
 			  </script>
 			  <?php
 			}
-		}
+
 
 	?>
   <!-- Bootstrap core JavaScript-->
