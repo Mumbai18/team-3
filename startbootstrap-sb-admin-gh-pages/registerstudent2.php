@@ -65,7 +65,7 @@
             </div>
 
           
-            <a class="btn btn-primary btn-block" href="login.html">Register</a>
+            <a class="btn btn-primary btn-block" href="login.html">Submit</a>
           </form>
           
         </div>
