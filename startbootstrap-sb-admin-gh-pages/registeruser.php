@@ -54,14 +54,14 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="login.php">Register</a>
-        </form>
-        <div class="text-center">
+        <center>  <button name="submit" style="height:50px;width:200px;background-color:blue; color:white; ">login</button></form>
+        <div class="text-center"></center>
           <a class="d-block small mt-3" href="login_user.php">Login Page</a>
           <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
       </div>
     </div>
+
   </div>
   <!-- Bootstrap core JavaScript-->
   <?php
