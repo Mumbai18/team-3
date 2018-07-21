@@ -18,7 +18,7 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link" href="committee_dashboard.php">
                     <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Student List</span>
+                    <span class="nav-link-text">Approved List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
