@@ -113,23 +113,21 @@ include('connection1.php');
                             </tr>
                             </thead>
                             <?php
-//                            $query1="Select name from profile"
                             $query="Select username,detail_id from user where id IN (Select id from student)";
                             $res=mysqli_query($conn,$query);
-                            $query1="Select recommended_amount from student";
-                            $result1=mysqli_query($conn,$query1);
-
+                            $result=mysqli_query($conn,"Select recommended_amount from student");
                             $count=1;
                             if(mysqli_num_rows($res)>0){
                             //we have data
-                            while($row=mysqli_fetch_assoc($res) && $row1=mysqli_fetch_assoc($result1)) {
+                                $row3=mysqli_fetch_assoc($result);
+                            while($row=mysqli_fetch_assoc($res)) {
 
                                 ?>
 
                                 <tr>
                                     <td><input type="checkbox" onclick="toggleInput(<?php echo $count;?>)"></td>
-                                    <td><?php echo $row['name']; ?></td>
-                                    <td><?php echo $row1['recommended_amount'];?></td>
+                                    <td><?php echo $row['username']; ?></td>
+                                    <td><?php echo $row3['recommended_amount'];?></td>
                                     <td><input type="text" id="<?php echo $count; ?>" disabled=true></td>
                                 </tr>
 
