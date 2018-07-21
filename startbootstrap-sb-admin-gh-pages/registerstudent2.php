@@ -23,24 +23,26 @@ include 'connection1.php'
         <div class="container" style="background:white;">
          <div class="card-header">Register yourself</div>
          <div class="card-body">
-           <form method="post" action="" type=enctype="multipart/form-data">
-
+           <form method="post" action="" enctype="multipart/form-data"">
+             <div class="form-group">
+            </div>
 
              <div class="form-group">
+                           <input class="form-control" id="email" name="email"  placeholder="Enter your email address">
               <label for="exampleInputEmail1">Address Proof</label>
                <input class="form-control" id="add" name="add"  placeholder="Enter your address"><br>
+  <br>
 
                <input class="form-control" id="city" name="city" type="text" aria-describedby="eduHelp" placeholder="Enter your city"><br>
 
                <input class="form-control" id="state" name="state" type="text" aria-describedby="eduHelp" placeholder="Enter your state"><br>
             <br>
-              <input class="form-control" id="addressproof" name="addressproof" type="file" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
+              <input type="file"name="filee" id="filee" class="form-control " required></div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Profile picture </label><br>
               Please upload a picture :
-               <input class="form-control" id="profile_pic" name="profile_pic" type="file" aria-describedby="eduHelp"><br>
+        <input type="file"name="filee" id="filee" class="form-control " required><br>
 
                </div>
 
@@ -73,7 +75,7 @@ include 'connection1.php'
 
     <tr>
         <td>
-            <input class="form-control" type="text" id="qual1" name="qual1"/>
+
 
         </td>
 
@@ -238,7 +240,6 @@ Institute
 
 
 
-
          </div>
        </div>
      </div>
@@ -273,6 +274,7 @@ Institute
     }
     echo "$eact";
     $achieve=$eact;
+         $email=$_POST["email"];
     //$achieve = $_POST["achieve"];
     $aspiration = $_POST['aspiration'];
     $mom=$_POST['mom'];
@@ -300,8 +302,7 @@ Institute
     echo "$date";
     //var_dump($_POST);
 
-    $sql= "Insert into student(id,basic_address,city,state,pincode,education_details,achievements,aspiration,dad_name,dad_income,dad_profession,mom_name,mom_income,mom_profession,no_of_siblings,expense,financial_amount,financial_institute,deadline,non_financial,profile_pic,recommended_amount) values('103','$add','$city','$state','0','$edu','$achieve','$aspiration','$dad','$earn2','0','$mom','$earn1','0','$mem','0','0','$institute','$date','0','0','$amount')";
-    //$sql2= "Insert into student(id,basic_address,city) values('103','Mumbai','CityValue')";
+/*    $sql= "Insert into student(id,basic_address,city,state,pincode,education_details,achievements,aspiration,dad_name,dad_income,dad_profession,mom_name,mom_income,mom_profession,no_of_siblings,expense,financial_amount,financial_institute,deadline,non_financial,profile_pic,recommended_amount) values('103','$add','$city','$state','0','$edu','$achieve','$aspiration','$dad','$earn2','0','$mom','$earn1','0','$mem','0','0','$institute','$date','0','0','$amount')";
     $result=mysqli_query($con,$sql);
 
 
@@ -310,9 +311,30 @@ Institute
     //$result=mysqli_query($con,$sql);
     if(!$result)
       echo mysqli_error($conn);exit;
+  */
+
+          //Address
+           $fnm=$_FILES["filee"]["name"];
+           $dst="files\\".$fnm;
+             $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','address','$dst')";
+           move_uploaded_file($_FILES["filee"]["tmp_name"],$dst);
+           mysqli_query($con,$sql);
+           echo $sql;
+
+//Profile
+           $fnm=$_FILES["filee"]["name"];
+           $dst="files\\".$fnm;
+             $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','profile','$dst')";
+           move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+           mysqli_query($con,$sql);
+           echo $sql;
+
+
+
+
       }
-
-
   ?>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
