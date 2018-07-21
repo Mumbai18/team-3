@@ -42,7 +42,7 @@ include 'connection1.php'
             <div class="form-group">
               <label for="exampleInputEmail1">Profile picture </label><br>
               Please upload a picture :
-        <input type="file"name="filee" id="filee" class="form-control " required><br>
+        <input type="file"name="file2" id="file2" class="file2 " required><br>
 
                </div>
 
@@ -125,9 +125,10 @@ include 'connection1.php'
         </td>
     </tr>
 </table>
-             <input class="form-control" id="expense" name="expense" type="file" aria-describedby="emailHelp">
+                   <input type="file"name="file3" id="file3" class="file3 " required><br>
+
                    <input class="form-control" id="edu" name="edu" type="text" aria-describedby="eduHelp" placeholder="Enter your education history"><br>
-                  <input class="form-control" id="education" name="education" type="file" aria-describedby="eduHelp" placeholder="Enter your education history"><br>
+                   <input type="file"name="file4" id="file4" class="file4 " required><br>
 
                  </div>
 
