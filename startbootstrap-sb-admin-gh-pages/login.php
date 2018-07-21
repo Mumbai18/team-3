@@ -3,7 +3,7 @@
 
 <?php
     include('include/header.php');
-    include('connection.php');
+    include('connection1.php');
 ?>
 <body class="bg-dark">
 <div class="container">

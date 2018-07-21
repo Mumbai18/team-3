@@ -16,15 +16,15 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="committee_dashboard.php">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Student List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="approved_list.php">
+                <a class="nav-link" href="pending_list.php">
                     <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Approved List</span>
+                    <span class="nav-link-text">Pending List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
@@ -89,25 +89,25 @@
                             <th>Current Qualification</th>
                             <th>Family Income</th>
                             <th>Extra Curricular</th>
-                            <th> Approve and send sms </th>
+                            <th> Look at documents</th>
                         </tr>
                         </thead>
 
                         <?php
-$res=mysqli_query($con,"select * from profile where status=0");
+$res=mysqli_query($con,"select * from profile where status=1");
 //echo "Hello";
 while($row=mysqli_fetch_array($res))
 {
 ?>
-                        <tr>
-                            <td> <?php echo $row['name']?></td>
-                            <td><?php echo $row['phone']?></td>
-                            <td><?php echo $row['email']?></td>
-                            <td><?php echo $row['qualification']?></td>
-                            <td><?php echo $row['income']?></td>
-                            <td><?php echo $row['expected_help']?></td>
-                            <td><?php echo $row['extra_curricular']?></td>
-                            <td>  <a href='update_student_status.php?id=<?php echo $row["id"];?>'>Approve</a></td>
+<tr>
+<td> <?php echo $row['name']?></td>
+<td><?php echo $row['phone']?></td>
+<td><?php echo $row['email']?></td>
+<td><?php echo $row['qualification']?></td>
+<td><?php echo $row['income']?></td>
+<td><?php echo $row['expected_help']?></td>
+<td><?php echo $row['extra_curricular']?></td>
+                            <td>  <a href='update_student_status.php?id=<?php echo $row["id"];?>'>Link</a></td>
                         </tr>
 <?php
 } ?>

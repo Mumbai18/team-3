@@ -18,7 +18,7 @@
 
     if(isset($_POST["submit"]))
     {
-        $sql="insert into profile(name,dob,phone,email,qualification,income,expected_help,extra_curricular) values('$_POST[username]','$_POST[dob]','$_POST[number]','$_POST[email]','$_POST[qualif]','$_POST[income]','$_POST[f_help]','$eact')";
+        $sql="insert into profile(name,dob,phone,email,qualification,income,expected_help,extra_curricular,status) values('$_POST[username]','$_POST[dob]','$_POST[number]','$_POST[email]','$_POST[qualif]','$_POST[income]','$_POST[f_help]','$eact','0')";
         $ress=mysqli_query($conn, $sql);
         if(!$ress){
             die("QUERY FAILED ".mysqli_error($conn));

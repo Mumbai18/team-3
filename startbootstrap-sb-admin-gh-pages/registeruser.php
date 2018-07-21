@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
     include('include/header.php');
-    include('connection.php');
+    include('connection1.php');
 ?>
 <html lang="en">
 
