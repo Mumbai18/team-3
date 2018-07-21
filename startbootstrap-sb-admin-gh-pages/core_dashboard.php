@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    include('include/header.php');
+include('include/header.php');
 ?>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -17,27 +17,16 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Student List</span>
+                    <span class="nav-link-text">Student Unapproved List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Pending List</span>
+                    <span class="nav-link-text">Student Approved List</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Add Donor</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Add Student</span>
-                </a>
-            </li>
+
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                 <a class="nav-link" href="#">
@@ -67,52 +56,70 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">EduCon Committe</a>
+                <a href="#">Core Committee</a>
             </li>
             <li class="breadcrumb-item active">Student List</li>
         </ol>
 
-<!--        student table-->
+        <!--        student table-->
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fa fa-table"></i> Data Table Example</div>
-            <div class="card-body">
-                <div class="table-responsive ">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <div class="card-body col-md-12">
+                <div class="row">
+                    <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Name</th>
+                            <th></th>
                             <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
                         </tr>
                         </thead>
 
 
                         <tr>
-                            <td>Gloria Little</td>
+                            <td><input type="checkbox" ></td>
                             <td>Systems Administrator</td>
-                            <td>New York</td>
-                            <td>59</td>
-                            <td>2009/04/10</td>
-                            <td>$237,500</td>
                         </tr>
 
                         <tr>
-                            <td>Jenette Caldwell</td>
+                            <td><input type="checkbox"></td>
                             <td>Development Lead</td>
-                            <td>New York</td>
-                            <td>30</td>
-                            <td>2011/09/03</td>
-                            <td>$345,000</td>
                         </tr>
 
 
 
                         </tbody>
                     </table>
+                    </div>
+                    <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed"  >
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+
+
+                            <tr>
+                                <td><input type="checkbox" onclick="toggleInput(1)"></td>
+                                <td>Systems Administrator</td>
+                                <td><input type="text" id="1" disabled=true> </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox" onclick="toggleInput(2)"></td>
+                                <td>Development Lead</td>
+                                <td><input type="text" id="2" disabled=true></td>
+                            </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -152,5 +159,13 @@
 
 </div>
 </body>
+<script>
+    function toggleInput(id){
+        if(document.getElementById(id).disabled == false)
+            document.getElementById(id).disabled=true;
+        else
+            document.getElementById(id).disabled=false;
+    }
 
+</script>
 </html>
