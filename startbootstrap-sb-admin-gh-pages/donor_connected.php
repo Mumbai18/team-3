@@ -9,7 +9,7 @@ if (!$conn) {
   die ('Failed to connect to MySQL: ' . mysqli_connect_error());  
 }
 
-$sql = 'SELECT p.id, p.name, s.funds_allocated ,s.timestamp, s.flag FROM `donor-student` s , `profile` p WHERE p.id = s.student_id && s.donor_id = 1001;';
+$sql = 'SELECT p.id, p.name, s.funds_allocated ,s.timestamp, s.flag FROM `donor_student` s , `profile` p WHERE p.id = s.student_id && s.donor_id = 1001;';
     
 $query = mysqli_query($conn, $sql);
 
