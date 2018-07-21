@@ -36,7 +36,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Phone</label>
-            <input class="form-control" name="phone" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter email">
+            <input class="form-control" name="phone" id="exampleInputEmail1" type="Phone" aria-describedby="emailHelp" placeholder="Enter email">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -54,20 +54,19 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="login.html">Register</a>
+          <a class="btn btn-primary btn-block" href="login.php">Register</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="login.html">Login Page</a>
+          <a class="d-block small mt-3" href="login_user.php">Login Page</a>
           <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
       </div>
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <?php
+      include('include/footer.php');
+  ?>
 </body>
 
 </html>
