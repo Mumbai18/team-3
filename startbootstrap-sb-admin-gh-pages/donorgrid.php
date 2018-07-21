@@ -59,7 +59,7 @@ session_start();
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                           <th>Name</th><th>Qualification:</th><th>Aspiration</th><th>Family Income</th><th>Expected Help</th>
+                           <th>Name</th><th>Qualification:</th><th>Aspiration</th><th>Family Income</th><th>Expected Help</th><th>Add Student to List</th>
                         </tr>
                         </thead>
 
@@ -85,6 +85,8 @@ while($row = mysqli_fetch_array($results))
   echo $row['asp'];
    echo "</td><td>";    
   echo $row['financial_amount'];
+  echo "</td><td>";    
+  echo "<a href='donor_connected.php?id=".$row['id']."'>Add student</a>";
   echo "</td></tr>";  
 }?>
                         </tbody>
