@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+  include('connection.php');
     include('include/header.php');
 ?>
 
@@ -82,35 +83,32 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
+                            <th>Contact Number</th>
                             <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Age</th>
+                            <th>Current Qualification</th>
+                            <th>Family Income</th>
+                            <th> Approve and send sms </th>
                         </tr>
                         </thead>
 
-
+                        <?php
+$res=mysqli_query($con,"select * from students");
+//echo "Hello";
+while($row=mysqli_fetch_array($res))
+{
+?>
                         <tr>
-                            <td>Gloria Little</td>
-                            <td>Systems Administrator</td>
-                            <td>New York</td>
-                            <td>59</td>
-                            <td>2009/04/10</td>
-                            <td>$237,500</td>
+                            <td> <?php echo $row['name']?></td>
+                            <td><?php echo $row['number']?></td>
+                            <td><?php echo $row['age']?></td>
+                            <td><?php echo $row['qualif']?></td>
+                            <td><?php echo $row['income']?></td>
+                            <td><?php echo $row['f_help']?></td>
+                            <td><?php echo $row['e_act']?></td>
                         </tr>
-
-                        <tr>
-                            <td>Jenette Caldwell</td>
-                            <td>Development Lead</td>
-                            <td>New York</td>
-                            <td>30</td>
-                            <td>2011/09/03</td>
-                            <td>$345,000</td>
-                        </tr>
-
-
-
+<?php
+} ?>
                         </tbody>
                     </table>
                 </div>
@@ -152,5 +150,4 @@
 
 </div>
 </body>
-
 </html>
