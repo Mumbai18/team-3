@@ -10,14 +10,14 @@
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
-            <form  class="login-form" action="#" method="post">
+            <form  class="login-form" action="" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input class="form-control" name="email" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input class="form-control" id="exampleInputPassword1" type="passaword" placeholder="Password">
+                    <input class="form-control" name="password" id="exampleInputPassword1" type="password" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <div class="form-check">
@@ -35,12 +35,15 @@
     </div>
 </div>
 <?php
+
 if(isset($_POST["submit"]))
 	{
+
+
 			//$res=0;
 			$email = $_POST['email'];
-
-     $sql = "select * from user where email ='$email' and role = 'Donor'";
+      $pass=$_POST['password'];
+     $sql = "select * from user where email ='$email' and role = 'Donor' and password ='$pass'";
      $result = mysqli_query($con,$sql);
 		 //echo mysqli_num_rows($result);
      if(mysqli_num_rows($result)>=1)
@@ -51,17 +54,28 @@ if(isset($_POST["submit"]))
 				 </script>
         <?php }
 
-        $sql2 = "select * from user where email ='$email' and role = 'Volunteer'";
+        $sql2 = "select * from user where email ='$email' and role = 'Volunteer' and password ='$pass'";
         $result2 = mysqli_query($con,$sql2);
-   		 echo mysqli_num_rows($result);
-        if(mysqli_num_rows($result)>=1)
+   		 //echo mysqli_num_rows($result);
+        if(mysqli_num_rows($result2)>=1)
            {
    					?>
    					<script type="text/javascript">
-   				 window.location="donor.php";
+   				 window.location="volunteer.php";
    				 </script>
            <?php }
 
+
+           $sql3 = "select * from user where email ='$email' and role = 'Volunteer' and password ='$pass'";
+           $result3 = mysqli_query($con,$sql2);
+      		 //echo mysqli_num_rows($result);
+           if(mysqli_num_rows($result3)>=1)
+              {
+      					?>
+      					<script type="text/javascript">
+      				 window.location="committee.php";
+      				 </script>
+              <?php }
 
 
 
