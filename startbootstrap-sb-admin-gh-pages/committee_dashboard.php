@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#pending">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Pending List</span>
                 </a>
@@ -109,6 +109,51 @@ while($row=mysqli_fetch_array($res))
                         </tr>
 <?php
 } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class=""fa fa-table"></i>Pending Students List</div>
+
+            <div class="card-body" id="pending">
+                <div class="table-responsive ">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+
+
+                        <tr>
+                            <td>Gloria Little</td>
+                            <td>Systems Administrator</td>
+                            <td>New York</td>
+                            <td>59</td>
+                            <td>2009/04/10</td>
+                            <td>$237,500</td>
+                            <td><a class='btn btn-success' href=''><span class='fa fa-check'>Approve</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>Jenette Caldwell</td>
+                            <td>Development Lead</td>
+                            <td>New York</td>
+                            <td>30</td>
+                            <td>2011/09/03</td>
+                            <td></td>
+                            <td><a class='btn btn-success' href=''><span class='fa fa-check'>Approve</a></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
