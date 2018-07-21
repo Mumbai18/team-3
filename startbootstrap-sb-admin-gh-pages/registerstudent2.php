@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-
+<?php
+include 'connection1.php'
+ ?>
      <html lang="en">
 
      <head>
@@ -21,15 +23,17 @@
         <div class="container" style="background:white;">
          <div class="card-header">Register yourself</div>
          <div class="card-body">
-           <form method="POST" action="" type=enctype="multipart/form-data">
+           <form method="post" action="" type=enctype="multipart/form-data">
 
 
              <div class="form-group">
               <label for="exampleInputEmail1">Address Proof</label>
-               <input class="form-control" id="add" name="add" type="text" aria-describedby="eduHelp" placeholder="Enter your address"><br>
-               <input class="form-control" id="city" name="city" type="text" aria-describedby="eduHelp" placeholder="Enter your city"><br>
-               <input class="form-control" id="state" name="state" type="text" aria-describedby="eduHelp" placeholder="Enter your state"><br>
+               <input class="form-control" id="add" name="add"  placeholder="Enter your address"><br>
 
+               <input class="form-control" id="city" name="city" type="text" aria-describedby="eduHelp" placeholder="Enter your city"><br>
+
+               <input class="form-control" id="state" name="state" type="text" aria-describedby="eduHelp" placeholder="Enter your state"><br>
+            <br>
               <input class="form-control" id="addressproof" name="addressproof" type="file" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
 
@@ -129,10 +133,8 @@
                  <div class="col-md-6">
                   <br>
                   <label for="exampleInputLastName">Achievements</label><br>
-                   <input  type="checkbox"  name="achieve" value="sports"> Sports<br>
-                  <input type="checkbox"  name="achieve" value="music" > Music<br>
-                  <label for="exampleInputLastName">Achievements</label>
-                  <input class="form-control" id="achieve" name="achieve" type="textarea" aria-describedby="achieveHelp" placeholder="Enter your achievement">
+                   <input  type="checkbox"  name="sport" value="sport"> Sports<br>
+                  <input type="checkbox"  name="drawing" value="drawing" > Drawing<br>
 
                  </div>
                </div>
@@ -146,17 +148,16 @@
 
                             </div>
               <label for="exampleInputEmail1">Aspiration</label>
-              <input class="form-control" id="aspiration" name="aspiration" type="text" aria-describedby="emailHelp" placeholder="Enter aspiration goals">
+              <input class="form-control" id="aspiration" name="aspiration" type="text" aria-describedby="emailHelp" placeholder="Enter
+               goals">
             </div>
 
              <label for="exampleInputEmail1">Family earning details</label><br>
               <div class="form-group">
 
-             Mom :<br>
+             Mom :
              Name:
                            <input class="form-control" id="mom" name="mom" type="text" aria-describedby="eduHelp"><br>
-              <input class="form-control" id="earn1" name="earn1" type="text" aria-describedby="eduHelp" placeholder="Earning in INR"><br>
-             Mom :
               <input class="form-control" id="earn1" name="earn1" type="text" aria-describedby="eduHelp" placeholder="Earning in INR"><br>
               <input class="form-control" id="expense" name="expense" type="file" aria-describedby="emailHelp">
               Dad :
@@ -169,14 +170,14 @@
              </div>
              <div class="form-group">
               <label for="exampleInputEmail1">Address Proof</label>
-               <input class="form-control" id="add" name="add" type="text" aria-describedby="eduHelp" placeholder="Enter your address"><br>
+
               <input class="form-control" id="addressproof" name="addressproof" type="file" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
 
              <label for="exampleInputEmail1">Family expense details</label>
              <div class="form-group">
                 <input class="form-control" id="famexpense" type="text" name="famexpense" aria-describedby="emailHelp">
-                <input class="form-control" id="famexpense" type="input" name="famexpense" aria-describedby="emailHelp">
+
              </div>
 
 
@@ -188,8 +189,7 @@
             <div class="form-group">
                <label for="exampleInputEmail1">Family member details</label>
               <input class="form-control" id="memberdetails" name="memberdetails" type="text" aria-describedby="emailHelp" placeholder="Enter no of family members">
-              <input class="form-control" id="memberdetails" name="memberdetails" type="email" aria-describedby="emailHelp" placeholder="Enter no of family members">
-           </div>
+             </div>
 
            <div class="form-group">
              <label for="exampleInputEmail1">Details of fund requirement</label>
@@ -224,7 +224,6 @@ Institute
         </td>
       </tr>
     </table>
-              <input class="form-control" id="fund" name="fund" type="email" aria-describedby="emailHelp">
             </div>
 
     <br>
@@ -248,18 +247,69 @@ Institute
      <?php
       if(isset($_POST["submit"]))
   {
-    $add=$_POST["add"];
-    $city=$_POST["city"];
-    $state=$_POST["state"];
-    $edu = $_POST["edu"];
-    $achieve = $_POST["achieve"];
-    $aspiration = $_POST["aspiration"];
-    $earn1= $_POST["earn1"];
-    $earn2=$_POST["earn2"];
-    echo $_POST["add"];
-    $fam=$_POST["famexpense"];
-    $mem=$_POST["memberdetails"];
+    // echo "test";
+   // echo $_POST['add'];
+   $city=$_POST['city'];
+   echo "$city";
+   $add=$_POST['add'];
+   echo "$add";
+   $state=$_POST['state'];
+   echo "$state";
+   //$pinc=$_POST['pincode'];
 
+   $edu = $_POST['edu'];//Text field
+   echo "$edu";
+    $eact=" ";
+    $error="";
+    if (isset($_POST['sport'])){
+
+        $sport= $_POST['sport']; // Displays value of checked checkbox.
+        $eact=$eact.$sport;
+    }
+
+    if (isset($_POST['drawing'])){
+        $drawing= $_POST['drawing'];
+        $eact=$eact.$drawing;// Displays value of checked checkbox.
+    }
+    echo "$eact";
+    $achieve=$eact;
+    //$achieve = $_POST["achieve"];
+    $aspiration = $_POST['aspiration'];
+    $mom=$_POST['mom'];
+
+    $earn1= $_POST['earn1'];
+    $dad=$_POST['dad'];
+    $earn2=$_POST['earn2'];
+    $fam=$_POST['famexpense'];
+    $institute=$_POST['institute'];
+    echo"$mom";
+    echo"$dad";
+    echo"$earn1";
+    echo"$earn2";
+    $mem=$_POST['memberdetails'];
+    echo"$mem";
+    if (isset($_POST['aspiration'])){
+        $aspiration = $_POST['aspiration'];
+    }
+    echo "$aspiration";
+    //
+    $aspiration="Medical";
+    $amount=$_POST['amount'];
+    echo "$amount";
+    $date=$_POST['date'];
+    echo "$date";
+    //var_dump($_POST);
+
+    $sql= "Insert into student(id,basic_address,city,state,pincode,education_details,achievements,aspiration,dad_name,dad_income,dad_profession,mom_name,mom_income,mom_profession,no_of_siblings,expense,financial_amount,financial_institute,deadline,non_financial,profile_pic,recommended_amount) values('103','$add','$city','$state','0','$edu','$achieve','$aspiration','$dad','$earn2','0','$mom','$earn1','0','$mem','0','0','$institute','$date','0','0','$amount')";
+    //$sql2= "Insert into student(id,basic_address,city) values('103','Mumbai','CityValue')";
+    $result=mysqli_query($con,$sql);
+
+
+    echo "$sql";
+    //var_dump($result);
+    //$result=mysqli_query($con,$sql);
+    if(!$result)
+      echo mysqli_error($conn);exit;
       }
 
 
