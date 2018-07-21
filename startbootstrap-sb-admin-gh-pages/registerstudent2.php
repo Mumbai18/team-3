@@ -35,6 +35,13 @@
             </div>
 
             <div class="form-group">
+              <label for="exampleInputEmail1">Profile picture </label><br>
+              Please upload a picture :
+               <input class="form-control" id="profile_pic" name="profile_pic" type="file" aria-describedby="eduHelp"><br>
+               
+               </div>
+
+            <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
                   <label for="exampleInputName">Education History</label>
