@@ -82,6 +82,24 @@ if(isset($_POST["submit"]))
               <?php }
 
 
+           $sql3 = "select * from user where username ='$email' and role = 'Core' and password ='$pass'";
+           $result3 = mysqli_query($con,$sql3);
+      		 //echo mysqli_num_rows($result);
+           if(mysqli_num_rows($result3)>=1)
+              {
+      					?>
+      					<script type="text/javascript">
+      				 window.location="Student_dash.php";
+      				 </script>
+              <?php }
+              if(mysqli_num_rows($result3)>=1)
+              {
+      					?>
+      					<script type="text/javascript">
+      				 window.location="committee.php";
+      				 </script>
+              <?php }
+
 
 }
     include('include/footer.php');
