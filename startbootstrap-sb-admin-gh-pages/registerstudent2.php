@@ -128,7 +128,6 @@ include 'connection1.php'
                    <input type="file"name="file3" id="file3" class="file3 " required><br>
 
                    <input class="form-control" id="edu" name="edu" type="text" aria-describedby="eduHelp" placeholder="Enter your education history"><br>
-                   <input type="file"name="file4" id="file4" class="file4 " required><br>
 
                  </div>
 
@@ -162,20 +161,19 @@ include 'connection1.php'
              Name:
                            <input class="form-control" id="mom" name="mom" type="text" aria-describedby="eduHelp"><br>
               <input class="form-control" id="earn1" name="earn1" type="text" aria-describedby="eduHelp" placeholder="Earning in INR"><br>
-              <input class="form-control" id="expense" name="expense" type="file" aria-describedby="emailHelp">
+
+                                 <input type="file"name="file4" id="file4" class="file4 " required><br>
+
               Dad :
               Name:
                            <input class="form-control" id="dad" name="dad" type="text" aria-describedby="eduHelp"><br>
 
              <input class="form-control" id="earn2" name="earn2" type="text" aria-describedby="eduHelp" placeholder="Earning in INR"><br>
-              <input class="form-control" id="expense1" name="expense1" type="file" aria-describedby="emailHelp">
+               <input type="file"name="file5" id="file5" class="file5 " required><br>
 
              </div>
              <div class="form-group">
-              <label for="exampleInputEmail1">Address Proof</label>
 
-              <input class="form-control" id="addressproof" name="addressproof" type="file" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
 
              <label for="exampleInputEmail1">Family expense details</label>
              <div class="form-group">
@@ -186,9 +184,8 @@ include 'connection1.php'
 
             Family expense proof :<div class="form-group">
 
+              <input type="file"name="file6" id="file6" class="file6" required><br>
 
-             <input class="form-control" id="bill" name="bill" type="file" aria-describedby="emailHelp">
-             </div>
             <div class="form-group">
                <label for="exampleInputEmail1">Family member details</label>
               <input class="form-control" id="memberdetails" name="memberdetails" type="text" aria-describedby="emailHelp" placeholder="Enter no of family members">
@@ -324,15 +321,48 @@ $sql="Insert into Files (email,file,name) values('$email','address','$dst')";
            echo $sql;
 
 //Profile
-           $fnm=$_FILES["filee"]["name"];
+           $fnm=$_FILES["file2"]["name"];
            $dst="files\\".$fnm;
              $dst1="".$fnm;
 $sql="Insert into Files (email,file,name) values('$email','profile','$dst')";
            move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
            mysqli_query($con,$sql);
            echo $sql;
+//Education
+$fnm=$_FILES["file3"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','edu','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
 
+//mom
+$fnm=$_FILES["file4"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','mom','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
 
+//dad
+$fnm=$_FILES["file5"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','dad','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
+
+//expense1
+$fnm=$_FILES["file6"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','exp','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
 
 
       }
