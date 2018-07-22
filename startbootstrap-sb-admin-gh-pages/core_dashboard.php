@@ -173,18 +173,18 @@ if(isset($_POST['allocate_money'])){
         ?>
         <!--        student table-->
         <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-table"></i> Data Table Example</div>
             <div class="card-body col-md-12">
                 <form method="post">
                     <div class="row">
+
                         <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
+                                <tr>Donor Details</tr>
                                 <tr>
-                                    <th>Name</th>
+                                    <td><b>Name</b></td>
                                     <!--                            <th>Name</th>-->
-                                    <th>Amount</th>
+                                    <td><b>Amount</b></td>
                                 </tr>
                                 </thead>
                                 <?php
@@ -198,7 +198,7 @@ if(isset($_POST['allocate_money'])){
                                         $row2=mysqli_fetch_assoc($res2);
                                         ?>
                                         <tr>
-                                            <td><input name="tickBox" type="radio" value="<?php echo $row['username'];?>" /><?php echo $row['username']; ?></td>
+                                            <td><input name="tickBox" type="radio" value="  <?php echo $row['username'];?>" /><?php echo $row['username']; ?></td>
                                             <td><?php echo $row2['amount'];?></td>
                                         </tr>
 
@@ -213,10 +213,11 @@ if(isset($_POST['allocate_money'])){
                         <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed"  >
                             <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                                 <thead>
+                                <tr>Student Details</tr>
                                 <tr>
-                                    <th>Name</th>
+                                    <td><b>Name</b></td>
                                     <!--                                <th>Name</th>-->
-                                    <th>Suggested Amount</th>
+                                    <td><b>Suggested Amount</b></td>
                                     <!--                                <th>Amount</th>-->
                                 </tr>
                                 </thead>
@@ -256,8 +257,6 @@ if(isset($_POST['allocate_money'])){
 <!--    </div>-->
 
         <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-table"></i> Data Table Example</div>
             <div class="card-body col-md-12">
                 <form method="post">
                     <div class="row">
