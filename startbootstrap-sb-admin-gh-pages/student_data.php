@@ -10,6 +10,11 @@
     $result1=mysqli_query($conn, $query1);
     $result2=mysqli_query($conn, $query2);
     $result3=mysqli_query($conn, $query3);
+
+    if(isset($_POST('submit'))){
+        $q="UPDATE student set status=1 where id=203";
+        $r=mysqli_query($conn,$q);
+    }
 ?>
 <head>  
 <link type="text/css" rel="stylesheet" href="style.css">
@@ -139,30 +144,7 @@ td, th {
                     <?php
                         echo (json_decode($row['education_details'], true));
                     ?> 
-                    <!-- <table>
-                        <tr>
-                            <th>Standard</th>
-                            <th>Marks</th>
-                            <th>Institute</th>
-                            <th>Board</th>
-                            <th>Year</th>
-    
-                        </tr>
-                        <tr>
-                            <td>Xth</td>
-                            <td>84.6%</td>
-                            <td>Sardar Patel</td>
-                            <td>CBSE</td>
-                            <td>2018</td>
-                        </tr>
-                        <tr>
-                            <td>IX</td>
-                            <td>86.9%</td>
-                            <td>Sardar Patel</td>
-                            <td>CBSE</td>
-                            <td>2017</td>
-                        </tr>
-                    </table> -->
+
                 </div>
             </article>
             <div class="clear"></div>
@@ -303,7 +285,7 @@ td, th {
         <br>    
         <br>    
         <center>  
-            <button name="submit" style="height:50px;width:200px;background-color:blue; color:white; ">Approve</button>
+            <button name="submit" style="height:50px;width:200px;background-color:blue; color:white;">Approve</button>
             <div class="text-center">
         </center>
         <br>    

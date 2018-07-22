@@ -89,16 +89,16 @@
                             <th>Current Qualification</th>
                             <th>Family Income</th>
                             <th>Extra Curricular</th>
-                            <th> Approve and send sms </th>
+                            <th>Approve and send sms </th>
                         </tr>
                         </thead>
 
                         <?php
-$res=mysqli_query($con,"select * from profile where status=0");
-//echo "Hello";
-while($row=mysqli_fetch_array($res))
-{
-?>
+                        $res=mysqli_query($con,"select * from profile where status=0");
+                        //echo "Hello";
+                        while($row=mysqli_fetch_array($res))
+                        {
+                        ?>
                         <tr>
                             <td> <?php echo $row['name']?></td>
                             <td><?php echo $row['phone']?></td>
