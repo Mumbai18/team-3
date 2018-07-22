@@ -330,7 +330,7 @@ $sql="Insert into Files (email,file,name) values('$email','profile','$dst')";
            echo $sql;
 //Education
 $fnm=$_FILES["file3"]["name"];
-$dst="files\\".$fnm;
+$dst=$fnm;
   $dst1="".$fnm;
 $sql="Insert into Files (email,file,name) values('$email','edu','$dst')";
 move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
