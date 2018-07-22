@@ -1,23 +1,13 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <?php
     include('connection1.php');
     include('include/header.php');
-    $query1 = "SELECT * FROM user u, profile p WHERE u.id=203 and u.detail_id=p.id";
-    $query2 = "SELECT * FROM student WHERE id=203";
-    $query3 = "SELECT * FROM Files f, student st WHERE st.id=203 and st.email=f.email";
-    $result1=mysqli_query($conn, $query1);
-    $result2=mysqli_query($conn, $query2);
-    $result3=mysqli_query($conn, $query3);
-
-    if(isset($_POST['submit'])){
-        $q="UPDATE student set status=1 where id=203";
-        $r=mysqli_query($conn,$q);
-        if(!$r){
-            echo mysqli_error($conn);exit;
-        }
-    }
+    
+    
 ?>
 <head>  
 <link type="text/css" rel="stylesheet" href="style.css">
@@ -103,6 +93,10 @@ td, th {
         <div id="name">
             <h1 class="quickFade delayTwo">
                     <?php
+
+
+
+
                         $row1 = mysqli_fetch_array($result1);
                         echo $row1['name'];
                     ?>    
@@ -276,7 +270,7 @@ td, th {
                             {
                                 echo $row['file'];
                                 echo " - ";?>
-                                <a href="files/<?php echo $row["name"];?>"><?php echo $row["name"] ?></a>
+                                <a href="files/<?php echo $row["name"];?>"><?php echo $row["name"]; ?></a>
                                 <?php echo "<br>";
                             }
                         ?>
@@ -286,11 +280,28 @@ td, th {
             <div class="clear"></div>
         </section>
         <br>    
-        <br>   <form method="post"> 
-        <center>  
+        <br>    
+        <center><form method="post">
             <button name="submit" style="height:50px;width:200px;background-color:blue; color:white;">Approve</button>
+
+        </form>
+
+        <?php
+            if(!$_POST('submit'))
+    {
+        $q="UPDATE student set status=1 where id=203";
+        $r=mysqli_query($conn,$q);
+    }
+    $query1 = "SELECT * FROM user u, profile p WHERE u.id=203 and u.detail_id=p.id";
+    $query2 = "SELECT * FROM student WHERE id=203";
+    $query3 = "SELECT * FROM Files f, student st WHERE st.id=203 and st.email=f.email";
+    $result1=mysqli_query($conn, $query1);
+    $result2=mysqli_query($conn, $query2);
+    $result3=mysqli_query($conn, $query3);
+
+        ?>
             <div class="text-center">
-        </center></form>
+        </center>
         <br>    
     </div>
     
@@ -340,5 +351,8 @@ var pageTracker = _gat._getTracker("UA-3753241-1");
 pageTracker._initData();
 pageTracker._trackPageview();
 </script>
+<?php
+
+?>
 </body>
 </html>

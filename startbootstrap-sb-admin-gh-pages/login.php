@@ -12,8 +12,8 @@
         <div class="card-body">
             <form  class="login-form" action="" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input class="form-control" name="email" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input class="form-control" name="email" id="exampleInputEmail1" type="name" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
@@ -43,33 +43,40 @@ if(isset($_POST["submit"]))
 			//$res=0;
 			$email = $_POST['email'];
       $pass=$_POST['password'];
-     $sql = "select * from user where email ='$email' and role = 'Donor' and password ='$pass'";
+     $sql = "select * from user where username ='$email' and role = 'donor' and password ='$pass'";
      $result = mysqli_query($con,$sql);
 		 //echo mysqli_num_rows($result);
      if(mysqli_num_rows($result)>=1)
         {
 					?>
 					<script type="text/javascript">
-				 window.location="donor.php";
+				 window.location="donor_connected.php";
 				 </script>
         <?php }
 
-        $sql2 = "select * from user where email ='$email' and role = 'Volunteer' and password ='$pass'";
+        $sql2 = "select * from user where username ='$email' and role = 'committee' and password ='$pass'";
         $result2 = mysqli_query($con,$sql2);
    		 //echo mysqli_num_rows($result);
         if(mysqli_num_rows($result2)>=1)
            {
    					?>
    					<script type="text/javascript">
-   				 window.location="volunteer.php";
+   				 window.location="committee_dashboard.php";
    				 </script>
            <?php }
 
 
-           $sql3 = "select * from user where email ='$email' and role = 'Volunteer' and password ='$pass'";
-           $result3 = mysqli_query($con,$sql2);
+           $sql3 = "select * from user where username ='$email' and role = 'student' and password ='$pass'";
+           $result3 = mysqli_query($con,$sql3);
       		 //echo mysqli_num_rows($result);
            if(mysqli_num_rows($result3)>=1)
+              {
+      					?>
+      					<script type="text/javascript">
+      				 window.location="Student_dash.php";
+      				 </script>
+              <?php }
+              if(mysqli_num_rows($result3)>=1)
               {
       					?>
       					<script type="text/javascript">
