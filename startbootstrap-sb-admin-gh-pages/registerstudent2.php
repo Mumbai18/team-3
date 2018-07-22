@@ -23,24 +23,26 @@ include 'connection1.php'
         <div class="container" style="background:white;">
          <div class="card-header">Register yourself</div>
          <div class="card-body">
-           <form method="post" action="" type=enctype="multipart/form-data">
-
+           <form method="post" action="" enctype="multipart/form-data"">
+             <div class="form-group">
+            </div>
 
              <div class="form-group">
+                           <input class="form-control" id="email" name="email"  placeholder="Enter your email address">
               <label for="exampleInputEmail1">Address Proof</label>
                <input class="form-control" id="add" name="add"  placeholder="Enter your address"><br>
+  <br>
 
                <input class="form-control" id="city" name="city" type="text" aria-describedby="eduHelp" placeholder="Enter your city"><br>
 
                <input class="form-control" id="state" name="state" type="text" aria-describedby="eduHelp" placeholder="Enter your state"><br>
             <br>
-              <input class="form-control" id="addressproof" name="addressproof" type="file" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
+              <input type="file"name="filee" id="filee" class="form-control " required></div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Profile picture </label><br>
               Please upload a picture :
-               <input class="form-control" id="profile_pic" name="profile_pic" type="file" aria-describedby="eduHelp"><br>
+        <input type="file"name="file2" id="file2" class="file2 " required><br>
 
                </div>
 
@@ -73,7 +75,7 @@ include 'connection1.php'
 
     <tr>
         <td>
-            <input class="form-control" type="text" id="qual1" name="qual1"/>
+
 
         </td>
 
@@ -123,9 +125,9 @@ include 'connection1.php'
         </td>
     </tr>
 </table>
-             <input class="form-control" id="expense" name="expense" type="file" aria-describedby="emailHelp">
+                   <input type="file"name="file3" id="file3" class="file3 " required><br>
+
                    <input class="form-control" id="edu" name="edu" type="text" aria-describedby="eduHelp" placeholder="Enter your education history"><br>
-                  <input class="form-control" id="education" name="education" type="file" aria-describedby="eduHelp" placeholder="Enter your education history"><br>
 
                  </div>
 
@@ -159,20 +161,19 @@ include 'connection1.php'
              Name:
                            <input class="form-control" id="mom" name="mom" type="text" aria-describedby="eduHelp"><br>
               <input class="form-control" id="earn1" name="earn1" type="text" aria-describedby="eduHelp" placeholder="Earning in INR"><br>
-              <input class="form-control" id="expense" name="expense" type="file" aria-describedby="emailHelp">
+
+                                 <input type="file"name="file4" id="file4" class="file4 " required><br>
+
               Dad :
               Name:
                            <input class="form-control" id="dad" name="dad" type="text" aria-describedby="eduHelp"><br>
 
              <input class="form-control" id="earn2" name="earn2" type="text" aria-describedby="eduHelp" placeholder="Earning in INR"><br>
-              <input class="form-control" id="expense1" name="expense1" type="file" aria-describedby="emailHelp">
+               <input type="file"name="file5" id="file5" class="file5 " required><br>
 
              </div>
              <div class="form-group">
-              <label for="exampleInputEmail1">Address Proof</label>
 
-              <input class="form-control" id="addressproof" name="addressproof" type="file" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
 
              <label for="exampleInputEmail1">Family expense details</label>
              <div class="form-group">
@@ -183,9 +184,8 @@ include 'connection1.php'
 
             Family expense proof :<div class="form-group">
 
+              <input type="file"name="file6" id="file6" class="file6" required><br>
 
-             <input class="form-control" id="bill" name="bill" type="file" aria-describedby="emailHelp">
-             </div>
             <div class="form-group">
                <label for="exampleInputEmail1">Family member details</label>
               <input class="form-control" id="memberdetails" name="memberdetails" type="text" aria-describedby="emailHelp" placeholder="Enter no of family members">
@@ -238,7 +238,6 @@ Institute
 
 
 
-
          </div>
        </div>
      </div>
@@ -273,6 +272,7 @@ Institute
     }
     echo "$eact";
     $achieve=$eact;
+         $email=$_POST["email"];
     //$achieve = $_POST["achieve"];
     $aspiration = $_POST['aspiration'];
     $mom=$_POST['mom'];
@@ -301,7 +301,6 @@ Institute
     //var_dump($_POST);
 
     $sql= "Insert into student(id,basic_address,city,state,pincode,education_details,achievements,aspiration,dad_name,dad_income,dad_profession,mom_name,mom_income,mom_profession,no_of_siblings,expense,financial_amount,financial_institute,deadline,non_financial,profile_pic,recommended_amount) values('103','$add','$city','$state','0','$edu','$achieve','$aspiration','$dad','$earn2','0','$mom','$earn1','0','$mem','0','0','$institute','$date','0','0','$amount')";
-    //$sql2= "Insert into student(id,basic_address,city) values('103','Mumbai','CityValue')";
     $result=mysqli_query($con,$sql);
 
 
@@ -310,9 +309,63 @@ Institute
     //$result=mysqli_query($con,$sql);
     if(!$result)
       echo mysqli_error($conn);exit;
+
+
+          //Address
+           $fnm=$_FILES["filee"]["name"];
+           $dst="files\\".$fnm;
+             $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','address','$dst')";
+           move_uploaded_file($_FILES["filee"]["tmp_name"],$dst);
+           mysqli_query($con,$sql);
+           echo $sql;
+
+//Profile
+           $fnm=$_FILES["file2"]["name"];
+           $dst="files\\".$fnm;
+             $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','profile','$dst')";
+           move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+           mysqli_query($con,$sql);
+           echo $sql;
+//Education
+$fnm=$_FILES["file3"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','edu','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
+
+//mom
+$fnm=$_FILES["file4"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','mom','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
+
+//dad
+$fnm=$_FILES["file5"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','dad','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
+
+//expense1
+$fnm=$_FILES["file6"]["name"];
+$dst="files\\".$fnm;
+  $dst1="".$fnm;
+$sql="Insert into Files (email,file,name) values('$email','exp','$dst')";
+move_uploaded_file($_FILES["file2"]["tmp_name"],$dst);
+mysqli_query($con,$sql);
+echo $sql;
+
+
       }
-
-
   ?>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
