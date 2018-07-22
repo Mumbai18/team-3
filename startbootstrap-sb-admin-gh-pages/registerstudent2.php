@@ -20,6 +20,7 @@ include 'connection1.php'
     <link href="css/sb-admin.css" rel="stylesheet">
     </head>
     <body class="bg-dark">
+
         <div class="container" style="background:white;">
          <div class="card-header">Register yourself</div>
          <div class="card-body">
@@ -63,8 +64,8 @@ include 'connection1.php'
                   <input type="checkbox"  name="drawing" value="drawing" > Drawing<br>
 
                  </div>
-               </div>
-             </div>
+               
+             
              <div class="form-group">
               <label for="exampleInputEmail1">Aspiration</label><br>
               <input  type="radio"  name="aspiration" value="medical"> Medical<br>
@@ -76,7 +77,7 @@ include 'connection1.php'
               <label for="exampleInputEmail1">Aspiration</label>
               <input class="form-control" id="aspiration" name="aspiration" type="text" aria-describedby="emailHelp" placeholder="Enter
                goals">
-            </div>
+          
 
              <label for="exampleInputEmail1">Family earning details</label><br>
               <div class="form-group">
@@ -297,7 +298,10 @@ echo $sql;
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   </div>
-
+</form>
+</div>
+</div>
+</body>
     </body>
 
     </html>
