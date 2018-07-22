@@ -6,8 +6,10 @@
     include('include/header.php');
     $query1 = "SELECT * FROM user u, profile p WHERE u.id=203 and u.detail_id=p.id";
     $query2 = "SELECT * FROM student WHERE id=203";
+    $query3 = "SELECT * FROM Files f, student st WHERE st.id=203 and st.email=f.email";
     $result1=mysqli_query($conn, $query1);
     $result2=mysqli_query($conn, $query2);
+    $result3=mysqli_query($conn, $query3);
 ?>
 <head>  
 <link type="text/css" rel="stylesheet" href="style.css">
@@ -281,8 +283,32 @@ td, th {
             <div class="sectionTitle">
                 <h1>List of Documents</h1>
             </div>
+            <div class="sectionContent">
+                <article>
+                    <h2>
+                        <?php
+                            while($row=mysqli_fetch_array($result3))
+                            {
+                                echo $row['file'];
+                                echo " - ";?>
+                                <a href="files/<?php echo $row["name"];?>"><?php echo $row["name"] ?></a>
+                                <?php echo "<br>";
+                            }
+                        ?>
+                    </h2>
+                </article>                
+            </div>
+            <div class="clear"></div>
         </section>
+        <br>    
+        <br>    
+        <center>  
+            <button name="submit" style="height:50px;width:200px;background-color:blue; color:white; ">Approve</button>
+            <div class="text-center">
+        </center>
+        <br>    
     </div>
+    
 </div>
         </div>
     </div>
