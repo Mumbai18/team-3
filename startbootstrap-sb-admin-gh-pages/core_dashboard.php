@@ -171,6 +171,48 @@ if(isset($_POST['allocate_money'])){
             $res1=mysqli_query($conn,$query1);
 
         ?>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> Data Table Example</div>
+            <div class="card-body">
+                <div class="table-responsive ">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Age</th>
+                            <th>Age</th>
+                            <th>Current Qualification</th>
+                            <th>Family Income</th>
+                            <th>Extra Curricular</th>
+                            <th>Approve and send sms </th>
+                        </tr>
+                        </thead>
+
+                        <?php
+                        $res=mysqli_query($con,"select * from profile where status=0");
+                        //echo "Hello";
+                        while($row=mysqli_fetch_array($res))
+                        {
+                            ?>
+                            <tr>
+                                <td> <?php echo $row['name']?></td>
+                                <td><?php echo $row['phone']?></td>
+                                <td><?php echo $row['email']?></td>
+                                <td><?php echo $row['qualification']?></td>
+                                <td><?php echo $row['income']?></td>
+                                <td><?php echo $row['expected_help']?></td>
+                                <td><?php echo $row['extra_curricular']?></td>
+                                <td>  <a href='update_student_status.php?id=<?php echo $row["id"];?>'>Approve</a></td>
+                            </tr>
+                            <?php
+                        } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <!--        student table-->
         <div class="card mb-3">
             <div class="card-header">
