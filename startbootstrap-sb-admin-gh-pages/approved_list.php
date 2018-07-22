@@ -41,7 +41,7 @@
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="StudentProfiles.php">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Student Profiles</span>
                 </a>
@@ -107,7 +107,7 @@ while($row=mysqli_fetch_array($res))
 <td><?php echo $row['income']?></td>
 <td><?php echo $row['expected_help']?></td>
 <td><?php echo $row['extra_curricular']?></td>
-                            <td>  <a href='update_student_status.php?id=<?php echo $row["id"];?>'>Link</a></td>
+                            <td>  <a href='viewforms.php?id=<?php echo $row["email"];?>'>Link</a></td>
                         </tr>
 <?php
 } ?>
