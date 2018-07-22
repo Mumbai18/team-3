@@ -6,6 +6,31 @@ include('include/header.php');
 include('connection1.php');
 $query = "SELECT st.city, count(*) as number FROM donor_student ds, student st WHERE ds.student_id = st.id GROUP BY st.city";
 $result = mysqli_query($conn, $query);
+if(isset($_POST['allocate_money'])){
+    $value1=$_POST['optradio'];
+    $value2=$_POST['tickBox'];
+    $funds=$_POST['amount'];
+    $countRand=rand(15,199);
+    $query="INSERT into donor_student (donor_id,student_id,donor_name,student_name,funds_allocated,year) values (12+$countRand,13+$countRand,'$value2','$value1',$funds,2018)";
+    $result=mysqli_query($conn,$query);
+    if(!$result)
+        echo mysqli_error($conn);
+    $q="Select id from user where username='$value2'";
+//    echo $q;exit;
+    $r=mysqli_query($conn,$q);
+    $row=mysqli_fetch_assoc($r);
+    $id=$row['id'];
+//    echo $id;exit;
+    $q="Select amount,id from donor where id=$id";
+    $r=mysqli_query($conn,$q);
+    $roww=mysqli_fetch_assoc($r);
+    $finalAmount=$roww['amount']-$funds;
+    $id=$roww['id'];
+    $r=mysqli_query($conn,"UPDATE donor SET amount=$finalAmount where id=$id");
+    if(!$r)
+        echo mysqli_error($conn);
+}
+
 
 ?>
 <head>  
@@ -95,35 +120,22 @@ $result = mysqli_query($conn, $query);
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Jain Social Group EduCon Committee</a>
+    <a class="navbar-brand" href="#">Jain Social Group EduCon Committee</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Student Unapproved List</span>
-                </a>
-            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Student Approved List</span>
+                    <span class="nav-link-text">Student List</span>
                 </a>
             </li>
 
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Student Profiles</span>
-                </a>
-            </li>
-
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="##historic">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Historic Data</span>
                 </a>
@@ -164,77 +176,86 @@ $result = mysqli_query($conn, $query);
             <div class="card-header">
                 <i class="fa fa-table"></i> Data Table Example</div>
             <div class="card-body col-md-12">
-                <div class="row">
-                    <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Amount</th>
-                        </tr>
-                        </thead>
-                        <?php
-                            if(mysqli_num_rows($res1)>0){
-                            //we have data
-                            while($row=mysqli_fetch_assoc($res1)){
-                            $iddd=$row['id'];
-                            $query2="select amount from donor where id=$iddd";
-                            $res2=mysqli_query($conn,$query2);
-                            $row2=mysqli_fetch_assoc($res2);
-                        ?>
-                        <tr>
-                            <td><input type="checkbox" ></td>
-                            <td><?php echo $row['username']; ?></td>
-                            <td><?php echo $row2['amount'];?></td>
-                        </tr>
-
-                        <?php }
-                            }?>
-
-                        </tbody>
-                    </table>
-                    </div>
-                    <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed"  >
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Suggested Amount</th>
-                                <th>Amount</th>
-                            </tr>
-                            </thead>
-                            <?php
-                            $query="Select username,detail_id from user where id IN (Select id from student)";
-                            $res=mysqli_query($conn,$query);
-                            $result=mysqli_query($conn,"Select recommended_amount from student");
-                            $count=1;
-                            if(mysqli_num_rows($res)>0){
-                            //we have data
-                                $row3=mysqli_fetch_assoc($result);
-                            while($row=mysqli_fetch_assoc($res)) {
-
-                                ?>
-
+                <form method="post">
+                    <div class="row">
+                        <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                 <tr>
-                                    <td><input type="checkbox" onclick="toggleInput(<?php echo $count;?>)"></td>
-                                    <td><?php echo $row['username']; ?></td>
-                                    <td><?php echo $row3['recommended_amount'];?></td>
-                                    <td><input type="text" id="<?php echo $count; ?>" disabled=true></td>
+                                    <th>Name</th>
+                                    <!--                            <th>Name</th>-->
+                                    <th>Amount</th>
                                 </tr>
-
+                                </thead>
                                 <?php
-                                $count++;
-                            }}
-                            ?>
-                            </tbody>
-                        </table>
+                                $count=1;
+                                if(mysqli_num_rows($res1)>0){
+                                    //we have data
+                                    while($row=mysqli_fetch_assoc($res1)){
+                                        $iddd=$row['id'];
+                                        $query2="select amount from donor where id=$iddd";
+                                        $res2=mysqli_query($conn,$query2);
+                                        $row2=mysqli_fetch_assoc($res2);
+                                        ?>
+                                        <tr>
+                                            <td><input name="tickBox" type="radio" value="<?php echo $row['username'];?>" /><?php echo $row['username']; ?></td>
+                                            <td><?php echo $row2['amount'];?></td>
+                                        </tr>
+
+                                        <?php
+                                        $count++;
+                                    }
+                                }?>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-responsive col-md-6 col-xs-12" style="table-layout: fixed"  >
+                            <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <!--                                <th>Name</th>-->
+                                    <th>Suggested Amount</th>
+                                    <!--                                <th>Amount</th>-->
+                                </tr>
+                                </thead>
+                                <?php
+                                $query="Select username,detail_id from user where id IN (Select id from student)";
+                                $res=mysqli_query($conn,$query);
+                                $result=mysqli_query($conn,"Select recommended_amount from student");
+                                $count=1;
+                                if(mysqli_num_rows($res)>0){
+                                    //we have data
+                                    $row3=mysqli_fetch_assoc($result);
+                                    while($row=mysqli_fetch_assoc($res)) {
+
+                                        ?>
+
+                                        <tr>
+                                            <td><input type="radio" name="optradio" value="<?php echo $row['username'];?>" ><?php echo $row['username']; ?></td>
+                                            <td><?php echo $row3['recommended_amount'];?></td>
+                                        </tr>
+
+                                        <?php
+                                        $count++;
+                                    }}
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
-                </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter the amount" name="amount" class="form-control">
+                    </div>
+                    <button type="submit" name="allocate_money" class="btn btn-primary">Allocate money</button></form>
             </div>
         </div>
-        <div class="card mb-3">
+<!--    </div>-->
+
+        <div class="card mb-3" id="#historic">
             <div class="card-header">
                 <i class="fa fa-table"></i> Historic Data</div>
                 <div class="card-body col-md-12">
@@ -280,13 +301,4 @@ $result = mysqli_query($conn, $query);
 
 </div>
 </body>
-<script>
-    function toggleInput(id){
-        if(document.getElementById(id).disabled == false)
-            document.getElementById(id).disabled=true;
-        else
-            document.getElementById(id).disabled=false;
-    }
-
-</script>
 </html>

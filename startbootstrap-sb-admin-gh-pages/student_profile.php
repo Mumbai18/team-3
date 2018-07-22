@@ -15,30 +15,7 @@ session_start();
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="committee_dashboard.php">
-                    <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Student List</span>
-                </a>
-            </li>
-            
-        </ul>
-        <ul class="navbar-nav sidenav-toggler">
-            <li class="nav-item">
-                <a class="nav-link text-center" id="sidenavToggler">
-                    <i class="fa fa-fw fa-angle-left"></i>
-                </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-            </li>
-        </ul>
-    </div>
+ 
 </nav>
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -48,6 +25,8 @@ session_start();
                 <a href="#"></a>
             </li>
             <li class="breadcrumb-item active">Student List</li>
+            
+            
         </ol>
 
 <!--        student table-->
@@ -72,18 +51,11 @@ $pwd = "pass@123"; //password
 
 $link = mysqli_connect($host, $user, $pwd, $db);
 
-
-$query1 = "SELECT * from student s where s.id NOT IN (SELECT d.student_id from donor_student d where d.donor_id=1001)";
-$results1 = mysqli_query($link, $query1);
-
-$query = "SELECT u.detail_id,u.id,p.name,p.qualification,s.aspiration,(s.mom_income+s.dad_income) as asp,s.financial_amount FROM user u,profile p,student s WHERE u.role like 'student' AND u.detail_id = p.id AND s.id=u.id AND s.id IN (SELECT s.id from student s where s.id NOT IN (SELECT d.student_id from donor_student d where d.donor_id=1001))";
+ $query = "SELECT u.detail_id,u.id,p.name,p.qualification ,s.aspiration, (s.mom_income + s.dad_income) as asp,s.financial_amount FROM user u,profile p ,student s WHERE u.role like 'student' AND u.detail_id = p.id AND s.id=u.id";
 $results = mysqli_query($link, $query);
-
 
 while($row = mysqli_fetch_array($results))
 {
- 
-
   echo "<tr><td>"; 
   echo $row['name'];
   echo "</td><td>";   
@@ -96,9 +68,7 @@ while($row = mysqli_fetch_array($results))
   echo $row['financial_amount'];
   echo "</td><td>";    
   echo "<a href='donor_connected.php?id=".$row['id']."'>Add student</a>";
-  echo "</td></tr>";
-
-  
+  echo "</td></tr>";  
 }?>
                         </tbody>
                     </table>
