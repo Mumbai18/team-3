@@ -70,7 +70,7 @@
             <li class="breadcrumb-item">
                 <a href="#">EduCon Committe</a>
             </li>
-            <li class="breadcrumb-item active">Student List</li>
+            <li class="breadcrumb-item active">Second Scrutiny List</li>
         </ol>
 
 <!--        student table-->
