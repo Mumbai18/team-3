@@ -23,20 +23,22 @@ include 'connection1.php'
         <div class="container" style="background:white;">
          <div class="card-header">Register yourself</div>
          <div class="card-body">
-           <form method="post" action="" enctype="multipart/form-data"">
+           <form method="post" action="" enctype="multipart/form-data">
              <div class="form-group">
             </div>
 
              <div class="form-group">
+               Email id:
                            <input class="form-control" id="email" name="email"  placeholder="Enter your email address">
               <label for="exampleInputEmail1">Address Proof</label>
                <input class="form-control" id="add" name="add"  placeholder="Enter your address"><br>
-  <br>
 
+      City:
                <input class="form-control" id="city" name="city" type="text" aria-describedby="eduHelp" placeholder="Enter your city"><br>
-
+              State:
                <input class="form-control" id="state" name="state" type="text" aria-describedby="eduHelp" placeholder="Enter your state"><br>
             <br>
+            Address Proof
               <input type="file"name="filee" id="filee" class="form-control " required></div>
 
             <div class="form-group">
@@ -46,89 +48,11 @@ include 'connection1.php'
 
                </div>
 
-             <div class="form-group">
-               <div class="form-row">
-                 <div class="col-md-6">
-                   <label for="exampleInputName">Education History</label>
-                   <table>
-<tr>
-        <td>
-            Standard
 
-        </td>
-
-        <td>
-           Marks
-        </td>
-
-        <td>
-            Institute
-        </td>
-        <td>
-         Board
-        </td>
-
-        <td>
-           Year
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-
-
-        </td>
-
-        <td>
-            <input class="form-control" type="text" id="qual2" name="qual2"  />
-
-        </td>
-
-        <td>
-            <input  class="form-control" type="text" id="qual3" name="qual3"/>
-
-        </td>
-        <td>
-            <input class="form-control" type="text" id="qual4" name="qual4"  />
-
-        </td>
-
-        <td>
-            <input class="form-control" type="text" id="qual5" name="qual5"/>
-
-        </td>
-    </tr>
-
-        <tr>
-        <td>
-            <input class="form-control" type="text" id="qual6" name="qual6"/>
-
-        </td>
-
-        <td>
-            <input class="form-control" type="text" id="qual7" name="qual7"  />
-
-        </td>
-
-        <td>
-          <input  class="form-control" type="text" id="qual8" name="qual8"/>
-
-        </td>
-        <td>
-            <input class="form-control" type="text" id="qual9" name="qual9"  />
-
-        </td>
-
-        <td>
-            <input class="form-control" type="text" id="qual10" name="qual10"/>
-
-        </td>
-    </tr>
-</table>
-                   <input type="file"name="file3" id="file3" class="file3 " required><br>
 
                    <input class="form-control" id="edu" name="edu" type="text" aria-describedby="eduHelp" placeholder="Enter your education history"><br>
-
+                  Education background
+                   <input type="file"name="file3" id="file3" class="file3 " required><br>
                  </div>
 
 

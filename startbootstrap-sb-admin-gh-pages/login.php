@@ -27,10 +27,7 @@
                 </div>
                  <button name="submit" style="height:50px;width:200px;background-color:blue; color:white;">login</button>
             </form>
-            <div class="text-center">
-                <a class="d-block small mt-3" href="register.html">Register an Account</a>
-                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -84,6 +81,24 @@ if(isset($_POST["submit"]))
       				 </script>
               <?php }
 
+
+           $sql3 = "select * from user where username ='$email' and role = 'Core' and password ='$pass'";
+           $result3 = mysqli_query($con,$sql3);
+      		 //echo mysqli_num_rows($result);
+           if(mysqli_num_rows($result3)>=1)
+              {
+      					?>
+      					<script type="text/javascript">
+      				 window.location="Student_dash.php";
+      				 </script>
+              <?php }
+              if(mysqli_num_rows($result3)>=1)
+              {
+      					?>
+      					<script type="text/javascript">
+      				 window.location="committee.php";
+      				 </script>
+              <?php }
 
 
 }

@@ -24,7 +24,7 @@ session_start();
             <li class="breadcrumb-item">
                 <a href="#"></a>
             </li>
-            <li class="breadcrumb-item active">Student List</li>
+            <li class="breadcrumb-item active">Student Profile</li>
             
             
         </ol>
