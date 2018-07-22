@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+$license='Driving License';
   include('connection1.php');
     include('include/header.php');
 ?>
@@ -16,15 +17,15 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="committee_dashboard.php">
                     <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Student List</span>
+                    <span class="nav-link-text">Approved List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="approved_list.php">
+                <a class="nav-link" href="pending_list.php">
                     <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Approved List</span>
+                    <span class="nav-link-text">Pending List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
@@ -66,61 +67,42 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">EduCon Committe</a>
-            </li>
-            <li class="breadcrumb-item active">First Scrutiny List</li>
-        </ol>
-
-<!--        student table-->
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fa fa-table"></i> Data Table Example</div>
-            <div class="card-body">
-                <div class="table-responsive ">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Contact Number</th>
-                            <th>Age</th>
-                            <th>Age</th>
-                            <th>Current Qualification</th>
-                            <th>Family Income</th>
-                            <th>Extra Curricular</th>
-                            <th> Approve and send sms </th>
-                        </tr>
-                        </thead>
-
-                        <?php
-$res=mysqli_query($con,"select * from profile where status=0");
-//echo "Hello";
-while($row=mysqli_fetch_array($res))
-{
-?>
-                        <tr>
-                            <td> <?php echo $row['name']?></td>
-                            <td><?php echo $row['phone']?></td>
-                            <td><?php echo $row['email']?></td>
-                            <td><?php echo $row['qualification']?></td>
-                            <td><?php echo $row['income']?></td>
-                            <td><?php echo $row['expected_help']?></td>
-                            <td><?php echo $row['extra_curricular']?></td>
-                            <td>  <a href='update_student_status.php?id=<?php echo $row["id"];?>'>Approve</a></td>
-                        </tr>
-<?php
-} ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
+    <?php
+        include('connection1.php');
+            $unamee=$_GET["id"];
+            
+            $sql="select * from Files where email='$unamee'";
+            echo $sql;
+            $res=mysqli_query($con,$sql);
+            while($row=mysqli_fetch_array($res))
+            {
+    ?>
+
+    <div class="row">
+    <div class="col-md-6 form-group">
+       <div class="col-md-6 form-group"
+              <a style="margin-left:10px;"><b>Email :<?php echo $row['email'];?></b> </a>
+            </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12 form-group">
+      <?php echo $row["name"]; ?>
+    <img src="<?php echo $row["name"];?>"  width="200" height="200"/>
+    <div class="row">
+
+    </div>
+
+        </div>
+      </div>
+
+    <?php
+    } ?>
+
+
+
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">
