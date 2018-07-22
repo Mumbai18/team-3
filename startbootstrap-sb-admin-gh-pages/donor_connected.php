@@ -56,7 +56,7 @@ if (!$query) {
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="index-donor_new.html">
+          <a class="nav-link" href="donorgrid.php">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">New Prospects</span>
           </a>

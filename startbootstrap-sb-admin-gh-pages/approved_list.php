@@ -18,17 +18,17 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link" href="committee_dashboard.php">
                     <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Approved List</span>
+                    <span class="nav-link-text"> First Scrutiny List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="pending_list.php">
                     <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Pending List</span>
+                    <span class="nav-link-text">Second Scrutiny List</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="registeruser.php">
+                <a class="nav-link" href="register.php">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Add Donor</span>
                 </a>
@@ -41,7 +41,7 @@
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="student_profile.php">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Student Profiles</span>
                 </a>
