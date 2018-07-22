@@ -135,7 +135,7 @@ if(isset($_POST['allocate_money'])){
 
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="##historic">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Historic Data</span>
                 </a>
@@ -255,7 +255,7 @@ if(isset($_POST['allocate_money'])){
         </div>
 <!--    </div>-->
 
-        <div class="card mb-3">
+        <div class="card mb-3" id="#historic">
             <div class="card-header">
                 <i class="fa fa-table"></i> Historic Data</div>
                 <div class="card-body col-md-12">
