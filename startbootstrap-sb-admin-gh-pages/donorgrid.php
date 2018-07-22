@@ -95,7 +95,7 @@ while($row = mysqli_fetch_array($results))
    echo "</td><td>";    
   echo $row['financial_amount'];
   echo "</td><td>";    
-  echo "<a href='donor_connected.php?id=".$row['id']."'>Add student</a>";
+  echo "<a href='student_transfer.php?id=".$row['id']."'>Add student</a>";
   echo "</td></tr>";
 
   
