@@ -300,7 +300,7 @@ Institute
     echo "$date";
     //var_dump($_POST);
 
-/*    $sql= "Insert into student(id,basic_address,city,state,pincode,education_details,achievements,aspiration,dad_name,dad_income,dad_profession,mom_name,mom_income,mom_profession,no_of_siblings,expense,financial_amount,financial_institute,deadline,non_financial,profile_pic,recommended_amount) values('103','$add','$city','$state','0','$edu','$achieve','$aspiration','$dad','$earn2','0','$mom','$earn1','0','$mem','0','0','$institute','$date','0','0','$amount')";
+    $sql= "Insert into student(id,basic_address,city,state,pincode,education_details,achievements,aspiration,dad_name,dad_income,dad_profession,mom_name,mom_income,mom_profession,no_of_siblings,expense,financial_amount,financial_institute,deadline,non_financial,profile_pic,recommended_amount) values('103','$add','$city','$state','0','$edu','$achieve','$aspiration','$dad','$earn2','0','$mom','$earn1','0','$mem','0','0','$institute','$date','0','0','$amount')";
     $result=mysqli_query($con,$sql);
 
 
@@ -309,7 +309,7 @@ Institute
     //$result=mysqli_query($con,$sql);
     if(!$result)
       echo mysqli_error($conn);exit;
-  */
+
 
           //Address
            $fnm=$_FILES["filee"]["name"];
