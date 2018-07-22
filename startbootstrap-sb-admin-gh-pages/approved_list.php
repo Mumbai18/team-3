@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="registeruser.php">
+                <a class="nav-link" href="add_donor.php">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Add Donor</span>
                 </a>
@@ -41,7 +41,7 @@
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link" href="StudentProfiles.php">
+                <a class="nav-link" href="Student_profile.php">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Student Profiles</span>
                 </a>

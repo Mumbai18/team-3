@@ -27,10 +27,7 @@
                 </div>
                  <button name="submit" style="height:50px;width:200px;background-color:blue; color:white;">login</button>
             </form>
-            <div class="text-center">
-                <a class="d-block small mt-3" href="register.html">Register an Account</a>
-                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-            </div>
+            
         </div>
     </div>
 </div>
