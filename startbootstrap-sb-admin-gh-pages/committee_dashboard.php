@@ -41,7 +41,7 @@
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link" href="StudentProfiles.php">
+                <a class="nav-link" href="student_profile.php">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Student Profiles</span>
                 </a>

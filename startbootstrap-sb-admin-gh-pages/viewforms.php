@@ -100,7 +100,7 @@ $license='Driving License';
 
     <?php
     } ?>
-
+    <a href='#'>Verify</a>
 
 
     <footer class="sticky-footer">
