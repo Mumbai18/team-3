@@ -84,12 +84,12 @@
                         <tr>
                             <th>Name</th>
                             <th>Contact Number</th>
-                            <th>Age</th>
-                            <th>Age</th>
+                            <th>Email Id</th>
                             <th>Current Qualification</th>
                             <th>Family Income</th>
+                            <th>Expenses</th>
                             <th>Extra Curricular</th>
-                            <th> Approve and send sms </th>
+                            <th>Approve and send sms </th>
                         </tr>
                         </thead>
 

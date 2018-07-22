@@ -74,7 +74,7 @@ $license='Driving License';
             $unamee=$_GET["id"];
 
             $sql="select * from Files where email='$unamee'";
-            echo $sql;
+//            echo $sql;
             $res=mysqli_query($con,$sql);
             while($row=mysqli_fetch_array($res))
             {
