@@ -9,7 +9,30 @@
     $result1=mysqli_query($conn, $query1);
     $result2=mysqli_query($conn, $query2);
 ?>
+<head>  
+<link type="text/css" rel="stylesheet" href="style.css">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
 
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+
+</style>
+</head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -62,27 +85,205 @@
             <div class="card-header">
                 <i class="fa fa-table"></i> Student Data
             </div>
-            <div class="card-body">
-                <?php
-                    while($row=mysqli_fetch_array($result1))
-                    {
-                        echo "<br>"; 
-                        echo $row['name'];
-                        echo "<br>";   
-                        echo $row['dob'];
-                        echo "<br>";    
-                        echo $row['phone'];
-                        echo "<br>";    
-                        echo $row['email'];
-                        echo "<br>";    
-                        echo $row['qualification'];
-                        echo "<br>";    
-                        echo $row['income'];
-                        echo "<br>";
-                    }
+                <div class="mainDetails">
+        <div id="headshot" class="quickFade">
+            <img src="headshot.jpg" alt="Alan Smith" />
+        </div>
+        
+        <div id="name">
+            <h1 class="quickFade delayTwo">
+                    <?php
+                        $row1 = mysqli_fetch_array($result1);
+                        echo $row1['name'];
+                    ?>    
 
-                ?>    
+            </h1>
+            <div id="contactDetails" class="quickFade delayFour">
+            <ul>
+                <li class="bold">
+                    <?php
+                        $row = mysqli_fetch_array($result2);
+                        echo $row['basic_address'];
+                    ?> 
+                </li>
+                <li>
+                    <?php
+                        echo $row['city'];
+                    ?> 
+                </li>
+                <li>
+                    <?php
+                        echo $row['state'];
+                        echo "<br";
+                        echo $row['pincode'];
+                    ?> 
+                </li>
+            </ul>
+        </div>
+            
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+    
+    <div id="mainArea" class="quickFade delayFive">
+       <section>
+            <article>
+                <div class="sectionTitle">
+                    <h1>Education</h1>
+                </div>
+                
+                <div class="sectionContent">
+                    <?php
+                        echo (json_decode($row['education_details'], true));
+                    ?> 
+                    <!-- <table>
+                        <tr>
+                            <th>Standard</th>
+                            <th>Marks</th>
+                            <th>Institute</th>
+                            <th>Board</th>
+                            <th>Year</th>
+    
+                        </tr>
+                        <tr>
+                            <td>Xth</td>
+                            <td>84.6%</td>
+                            <td>Sardar Patel</td>
+                            <td>CBSE</td>
+                            <td>2018</td>
+                        </tr>
+                        <tr>
+                            <td>IX</td>
+                            <td>86.9%</td>
+                            <td>Sardar Patel</td>
+                            <td>CBSE</td>
+                            <td>2017</td>
+                        </tr>
+                    </table> -->
+                </div>
+            </article>
+            <div class="clear"></div>
+        </section>
+         <section>
+            <div class="sectionTitle">
+                <h1>Achievement</h1>
             </div>
+            
+            <div class="sectionContent">
+                <article>
+                    <h2>
+                        <?php
+                            echo $row['achievements']
+                        ?>
+                    </h2>
+                </article>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section>
+            <article>
+                <div class="sectionTitle">
+                    <h1>Family Income Details</h1>
+                </div>
+                <div class="sectionContent">
+                    <table>
+                        <tr>
+                            <th>Relation</th>
+                            <th>Monthly Income</th>
+                        </tr>
+                        <tr>
+                            <td>Father</td>
+                            <td>
+                                <?php
+                                    echo $row['dad_income'];
+                                ?> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mother</td>
+                            <td><?php
+                                    echo $row['mom_income'];
+                                ?> 
+                            </td> 
+                        </tr> 
+                    </table>
+                </div>
+            </article>
+            <div class="clear"></div>
+        </section>
+        <section>
+            <div class="sectionTitle">
+                <h1>Family Expense Details</h1>
+            </div>
+            <div class="sectionContent">
+                <article>
+                    <h2>
+                        <?php
+                            echo $row['expense'];
+                        ?> 
+                    </h2>
+                </article>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section>
+            <div class="sectionTitle">
+                <h1>Number of Family Members</h1>
+            </div>
+            
+            <div class="sectionContent">
+                <article>
+                    <h2>
+                        <?php
+                            echo $row['no_of_siblings'];
+                        ?> 
+                    </h2>
+                </article>
+                
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section>
+            <div class="sectionTitle">
+                <h1>Aspiration</h1>
+            </div>
+            
+            <div class="sectionContent">
+                <article>
+                    <h2>
+                        <?php
+                            echo $row['aspiration'];
+                        ?> 
+                    </h2>
+                </article>
+                
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section>
+            <div class="sectionTitle">
+                <h1>Non Financial Support</h1>
+            </div>
+            
+            <div class="sectionContent">
+                <article>
+                    <h2>
+                        <?php
+                            echo $row['non_financial'];
+                        ?>
+                    </h2>
+                </article>                
+            </div>
+            <div class="clear"></div>
+        </section>   
+        <section>   
+            <div class="sectionTitle">
+                <h1>List of Documents</h1>
+            </div>
+        </section>
+    </div>
+</div>
         </div>
     </div>
 </div>
@@ -119,5 +320,14 @@
     </div>
 
 </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3753241-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
 </body>
 </html>
