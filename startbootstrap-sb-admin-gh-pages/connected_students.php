@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <?php
-session_start();
   include('connection1.php');
     include('include/header.php');
 ?>
@@ -18,12 +16,18 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="committee_dashboard.php">
+                <a class="nav-link" href="donorgrid.php">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Student List</span>
                 </a>
             </li>
             
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="connected_students.php">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Students connected with you.</span>
+                </a>
+            </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -59,7 +63,7 @@ session_start();
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                           <th>Name</th><th>Qualification:</th><th>Aspiration</th><th>Family Income</th><th>Expected Help</th><th>Add Student to List</th>
+                           <th>Name</th><th>Qualification:</th><th>Aspiration</th><th>Family Income</th><th>Expected Help</th>
                         </tr>
                         </thead>
 
@@ -71,7 +75,7 @@ $pwd = "pass@123"; //password
 
 
 $link = mysqli_connect($host, $user, $pwd, $db);
- $query = "SELECT u.detail_id,u.id,p.name,p.qualification ,s.aspiration, (s.mom_income + s.dad_income) as asp,s.financial_amount FROM user u,profile p ,student s WHERE u.role like 'student' AND u.detail_id = p.id AND s.id=u.id";
+ $query = "SELECT p.name,p.qualification ,s.aspiration, (s.mom_income + s.dad_income) as asp,s.financial_amount FROM profile p ,student s WHERE s.id=p.id";
 $results = mysqli_query($link, $query);
 while($row = mysqli_fetch_array($results))
 {
@@ -85,8 +89,6 @@ while($row = mysqli_fetch_array($results))
   echo $row['asp'];
    echo "</td><td>";    
   echo $row['financial_amount'];
-  echo "</td><td>";    
-  echo "<a href='donor_connected.php?id=".$row['id']."'>Add student</a>";
   echo "</td></tr>";  
 }?>
                         </tbody>

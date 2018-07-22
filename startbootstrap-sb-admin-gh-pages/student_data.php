@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <?php
-session_start();
-  include('connection1.php');
+    include('connection1.php');
     include('include/header.php');
+    $query1 = "SELECT * FROM user u, profile p WHERE u.id=203 and u.detail_id=p.id";
+    $query2 = "SELECT * FROM student WHERE id=203";
+    $result1=mysqli_query($conn, $query1);
+    $result2=mysqli_query($conn, $query2);
 ?>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -18,12 +20,17 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="committee_dashboard.php">
+                <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Student List</span>
+                    <span class="nav-link-text">Student Data</span>
                 </a>
             </li>
-            
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a class="nav-link" href="approved_list.php">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Documents</span>
+                </a>
+            </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -45,58 +52,40 @@ session_start();
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#"></a>
+                <a href="#">EduCon Committe</a>
             </li>
-            <li class="breadcrumb-item active">Student List</li>
+            <li class="breadcrumb-item active">Student Page</li>
         </ol>
 
 <!--        student table-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Data Table Example</div>
+                <i class="fa fa-table"></i> Student Data
+            </div>
             <div class="card-body">
-                <div class="table-responsive ">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                           <th>Name</th><th>Qualification:</th><th>Aspiration</th><th>Family Income</th><th>Expected Help</th><th>Add Student to List</th>
-                        </tr>
-                        </thead>
+                <?php
+                    while($row=mysqli_fetch_array($result1))
+                    {
+                        echo "<br>"; 
+                        echo $row['name'];
+                        echo "<br>";   
+                        echo $row['dob'];
+                        echo "<br>";    
+                        echo $row['phone'];
+                        echo "<br>";    
+                        echo $row['email'];
+                        echo "<br>";    
+                        echo $row['qualification'];
+                        echo "<br>";    
+                        echo $row['income'];
+                        echo "<br>";
+                    }
 
-                        <?php
-                        $host = "54.169.150.246"; //server
-$db = "team_3"; //database name
-$user = "root"; //dabases user name
-$pwd = "pass@123"; //password
-
-
-$link = mysqli_connect($host, $user, $pwd, $db);
- $query = "SELECT u.detail_id,u.id,p.name,p.qualification ,s.aspiration, (s.mom_income + s.dad_income) as asp,s.financial_amount FROM user u,profile p ,student s WHERE u.role like 'student' AND u.detail_id = p.id AND s.id=u.id";
-$results = mysqli_query($link, $query);
-while($row = mysqli_fetch_array($results))
-{
-  echo "<tr><td>"; 
-  echo $row['name'];
-  echo "</td><td>";   
-  echo $row['qualification'];
-  echo "</td><td>";    
-  echo $row['aspiration'];
-  echo "</td><td>";    
-  echo $row['asp'];
-   echo "</td><td>";    
-  echo $row['financial_amount'];
-  echo "</td><td>";    
-  echo "<a href='donor_connected.php?id=".$row['id']."'>Add student</a>";
-  echo "</td></tr>";  
-}?>
-                        </tbody>
-                    </table>
-                </div>
+                ?>    
             </div>
         </div>
-
-
     </div>
+</div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
